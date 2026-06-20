@@ -6,8 +6,11 @@
   <title>立体几何交互练习平台</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
-  <link rel="stylesheet" href="/src/styles/index.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+  <script type="module" crossorigin src="/SolidGeogebra-Platform/assets/index-uVx3jk6Y.js"></script>
+  <link rel="modulepreload" crossorigin href="/SolidGeogebra-Platform/assets/three-C9Zn1ymT.js">
+  <link rel="modulepreload" crossorigin href="/SolidGeogebra-Platform/assets/gsap-SFc2wnMY.js">
+  <link rel="stylesheet" crossorigin href="/SolidGeogebra-Platform/assets/index-BCbAMxNm.css">
 </head>
 <body>
   <!-- Loading Overlay -->
@@ -200,7 +203,6 @@
               <div class="form-group">
                 <label class="form-label">知识点</label>
                 <select class="select" id="knowledge-filter" multiple size="3">
-                  <option value="">全部</option>
                   <option value="line_parallel">线线平行</option>
                   <option value="line_skew">异面直线</option>
                   <option value="line_plane_parallel">线面平行</option>
@@ -223,13 +225,13 @@
                 </select>
               </div>
               <div class="practice-btns">
-                <button class="btn btn-primary btn-sm btn-start-practice" id="btn-start-practice">
+                <button class="btn btn-primary btn-sm btn-start-practice" id="btn-start-practice" title="使用当前查看的几何体开始练习">
                   <span class="material-symbols-rounded">play_arrow</span>
-                  开始练习
+                  当前几何体练习
                 </button>
-                <button class="btn btn-outline btn-sm btn-start-practice" id="btn-random-question" title="随机生成一个几何体并开始练习">
+                <button class="btn btn-outline btn-sm btn-start-practice" id="btn-random-question" title="随机选一个几何体，切换过去并开始练习">
                   <span class="material-symbols-rounded">shuffle</span>
-                  随机生成
+                  随机几何体练习
                 </button>
               </div>
             </div>
@@ -292,6 +294,10 @@
               <div class="record-stat-value" id="total-time">0分钟</div>
               <div class="record-stat-label">累计用时</div>
             </div>
+            <div class="record-stat-card">
+              <div class="record-stat-value" id="wrong-count">0</div>
+              <div class="record-stat-label">错题数</div>
+            </div>
           </div>
 
           <!-- Accuracy Chart -->
@@ -300,43 +306,7 @@
           </div>
         </div>
 
-        <!-- Wrong Questions Panel -->
-        <div class="records-panel wrong-panel">
-          <div class="records-header">
-            <h3>❌ 错题本</h3>
-          </div>
-
-          <!-- Wrong/Correct Toggle -->
-          <div class="wrong-toggle-group">
-            <button class="btn btn-sm btn-outline active" id="btn-show-wrong" data-filter="wrong">
-              <span class="material-symbols-rounded">close</span>
-              错题
-            </button>
-            <button class="btn btn-sm btn-outline" id="btn-show-correct" data-filter="correct">
-              <span class="material-symbols-rounded">check</span>
-              正确
-            </button>
-          </div>
-
-          <!-- Wrong Stats -->
-          <div class="records-stats-grid">
-            <div class="record-stat-card">
-              <div class="record-stat-value" id="wrong-count">0</div>
-              <div class="record-stat-label">错题数</div>
-            </div>
-            <div class="record-stat-card">
-              <div class="record-stat-value" id="wrong-rate">0%</div>
-              <div class="record-stat-label">错题率</div>
-            </div>
-          </div>
-
-          <!-- Wrong Records List -->
-          <div class="records-list" id="wrong-records-list">
-            <!-- Wrong records will be inserted here -->
-          </div>
-        </div>
-
-        <!-- Records List -->
+        <!-- Records List (toggle between practice records & wrong records) -->
         <div class="records-list" id="records-list">
           <!-- Records will be inserted here -->
         </div>
@@ -370,7 +340,6 @@
 
   <!-- Toast Container -->
   <div class="toast-container" id="toast-container"></div>
-
-  <script type="module" src="/src/main.js"></script>
+
 </body>
 </html>
