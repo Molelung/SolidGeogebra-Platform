@@ -174,6 +174,16 @@ A: 在"做题记录"标签中点击"导出"按钮，保存JSON文件。需要恢
 ### Q: 如何添加自定义几何体？
 A: 参考 `src/geometry/configs.js` 中的配置格式，添加新的几何体定义。
 
+## 线上地址
+
+本项目已迁移到 **Cloudflare Pages**，正式访问地址：
+
+- **新地址（推荐）**：<https://geometry.mokelin.cn>
+- Cloudflare Pages 项目：`solid-geometry`，部署产物为 `gh-pages` 分支的 Vite 构建结果（`index.html` + `assets/`）
+- 原 GitHub Pages 地址 `https://molelung.github.io/SolidGeogebra-Platform/` 已于 2026-10-18 停止服务
+
+> 迁移说明：`gh-pages` 产物原本按 GitHub Pages 项目子路径生成，`index.html` 里引用的是 `/SolidGeogebra-Platform/assets/...` 绝对路径；迁移到 Cloudflare Pages 根路径部署时已改写为 `/assets/...`（仅部署副本，仓库源码未改）。若重新构建 `gh-pages` 产物再部署到根路径，请把 Vite 的 `base` 设为 `/`，否则资源会 404。
+
 ## 更新日志
 
 ### v0.2.0 (2026-05-30)
